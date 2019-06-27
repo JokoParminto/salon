@@ -172,7 +172,7 @@
               <h2 class="title-a">Services</h2>
             </div>
             <div class="title-link">
-              <a href="property-grid.html">All Services
+              <a href="#">All Services
                 <span class="ion-ios-arrow-forward"></span>
               </a>
             </div>
