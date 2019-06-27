@@ -1,7 +1,7 @@
 <?php
 	include("header.php");
 ?>
-  <!--/ Carousel Star /-->
+  <!--/ Gambar Slide/-->
   <div class="intro intro-carousel">
     <div id="carousel" class="owl-carousel owl-theme">
       <div class="carousel-item-a intro-item bg-image" style="background-image: url(img/blank-slide.png)">
@@ -72,9 +72,9 @@
       </div>
     </div>
   </div>
-  <!--/ Carousel end /-->
+  <!--/ Gambar Slide /-->
 
-  <!--/ Services Star /-->
+  <!--/ Our Service /-->
   <section class="section-services section-t8">
     <div class="container">
       <div class="row">
@@ -160,9 +160,9 @@
       </div>
     </div>
   </section>
-  <!--/ Services End /-->
+  <!--/  Our Service /-->
 
-  <!--/ Services Star /-->
+  <!--/ Services /-->
   <section class="section-property section-t8">
     <div class="container">
       <div class="row">
@@ -318,7 +318,7 @@
       </div>
     </div>
   </section>
-  <!--/ Services End /-->
+  <!--/ Services /-->
 
 <?php
 	include("footer.php");
