@@ -102,7 +102,7 @@
                                   </div>
                               
                                   <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" style= "background-color: #C71585;">Submit</button>
-
+                                  <a href="../admin/index-login.php" style="color:white;">Login</a>
                                 </form>
                             </div>
                         </div>

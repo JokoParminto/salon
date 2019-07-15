@@ -27,10 +27,8 @@
   <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body>
-
-  <div class="click-closed"></div>
-  
+<body> 
+  <div class="click-closed"></div> 
   <!--/ Nav Star /-->
   <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
     <div class="container">
@@ -56,9 +54,11 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
           </li>
+          <li class="nav-item" style="margin-left: 32%;">
+            <a class="nav-link" href="admin/index-login.php"><button type="button" style="background-color:#2ec96a;" class="btn btn-default">Login</button></a>
+          </li>
         </ul>
       </div>
-       <a class="nav-link" href="admin/index-login.php">login</a>
     </div>
   </nav>
   <!--/ Nav End /-->
@@ -233,11 +233,11 @@
             <div class="title-box">
               <h2 class="title-a">Services</h2>
             </div>
-            <div class="title-link">
+            <!-- <div class="title-link">
               <a href="#">All Services
                 <span class="ion-ios-arrow-forward"></span>
               </a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -380,6 +380,9 @@
       </div>
     </div>
   </section>
+  <div style="text-align:center; margin-top: 10px;">
+    <a class="nav-link" href="admin/index-login.php"><button type="button" style="background-color:#2ec96a;" class="btn btn-default">Booking Now</button></a>
+  </div>
   <!--/ Services /-->
 
 <!--/ footer Star /-->

@@ -1,7 +1,6 @@
 <?php
-	include("connection.php");
+	include("../connection/connection.php");
   $member_name = $_POST['member_name'];
-  // print_r($member_name);exit();
 	$member_address = $_POST['member_address'];
 	$member_birthdate = $_POST['member_birthdate'];
 	$member_phone = $_POST['member_phone'];
@@ -62,7 +61,7 @@ if ($service) {
     '$today'
   )";
   $user_access = mysqli_query($db, $query);
-} 
+}
 	if(!$user_access){
 		$simpan = "false";
 	}else{

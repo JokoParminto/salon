@@ -171,155 +171,62 @@
             <div class="title-box">
               <h2 class="title-a">Services</h2>
             </div>
-            <div class="title-link">
+            <!-- <div class="title-link">
               <a href="#">All Services
                 <span class="ion-ios-arrow-forward"></span>
               </a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
       <div id="property-carousel" class="owl-carousel owl-theme">
-        <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="img/background.png" alt="" class="img-a img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="property-single.html">Perawatan
-                      <br />Wajah</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">Price | $ 12.000</span>
+      <?php
+	      $query="select * from service ";
+        $dataPasien = mysqli_query($db, $query);
+        while ($isi = mysqli_fetch_assoc($dataPasien)) { ?>
+          <div class="carousel-item-b">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+              	<?php echo "<img src='admin/images/".$isi["service_photo"]."'  alt='' class='img-a img-fluid' />"; ?>
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                    	<?php echo "<a href='property-single.html'>".$isi["service_name"]; ?>
+                    </h2>
                   </div>
-                  <a href="#" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                  <ul class="card-info d-flex justify-content-around">
-                    <li>
-                      <h4 class="card-info-title">Durasi</h4>
-                      <span>60 Menit
-                      </span>
-                    </li>
-                  </ul>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <?php echo "<span class='price-a'>Harga "." | "."Rp"." ".$isi["service_price"]."</span>"; ?>
+                      <!-- <span class="price-a">Price | $ 12.000</span> -->
+                    </div>
+                    <a href="#" class="link-a">
+                      <span class="ion-ios-arrow-forward"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Durasi</h4> 
+                        <span>60 Menit
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="img/background.png" alt="" class="img-a img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="property-single.html">Potong
-                      <br /> Rambut</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">Price | $ 12.000</span>
-                  </div>
-                  <a href="property-single.html" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                  <ul class="card-info d-flex justify-content-around">
-                    <li>
-                      <h4 class="card-info-title">Durasi</h4>
-                      <span>40 Menit
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="img/background.png" alt="" class="img-a img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="property-single.html">Bleaching
-                      <br /> Rambut</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">Price | $ 12.000</span>
-                  </div>
-                  <a href="property-single.html" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                  <ul class="card-info d-flex justify-content-around">
-                    <li>
-                      <h4 class="card-info-title">Durasi</h4>
-                      <span>60 Menit
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="img/background.png" alt="" class="img-a img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="property-single.html">Menicure
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">Price | $ 12.000</span>
-                  </div>
-                  <a href="property-single.html" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                  <ul class="card-info d-flex justify-content-around">
-                    <li>
-                      <h4 class="card-info-title">Durasi</h4>
-                      <span>60 Menit
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+       <?php }
+       $db->close();
+       ?>
     </div>
   </section>
   <!--/ Services /-->
-
+  <div style="text-align:center; margin-top: 10px;">
+    <button type="submit" style="background-color:#2ec96a;" class="btn btn-default">Booking Now</button> 
+  </div>
 <?php
 	include("footer.php");
 ?>

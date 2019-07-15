@@ -60,9 +60,11 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
           </li>
+          <li class="nav-item" style="margin-left: 32%;">
+            <a class="nav-link" href="admin/logout.php"><button type="button" href="admin/logout.php " style="background-color:#2ec96a;" class="btn btn-default">logout</button></a>
+          </li>
         </ul>
       </div>
-       <a class="nav-link" href="admin/logout.php">logout</a>
     </div>
   </nav>
   <!--/ Nav End /-->
