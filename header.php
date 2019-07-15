@@ -1,3 +1,7 @@
+<?php
+  include("connection/check.php");
+  // print_r($_SESSION);exit();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,10 +45,7 @@
         <span></span>
       </button>
       <a class="navbar-brand text-brand" href="index.html">Kanzai<span class="color-b">Salon</span></a>
-      <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
-        data-target="#navbarTogglerDemo01" aria-expanded="false">
-        <span class="fa fa-search" aria-hidden="true"></span>
-      </button>
+      <!-- <a class="nav-link" href="#">login</a> -->
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -61,10 +62,7 @@
           </li>
         </ul>
       </div>
-      <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"
-        data-target="#navbarTogglerDemo01" aria-expanded="false">
-        <span class="fa fa-search" aria-hidden="true"></span>
-      </button>
+       <a class="nav-link" href="admin/logout.php">logout</a>
     </div>
   </nav>
   <!--/ Nav End /-->
