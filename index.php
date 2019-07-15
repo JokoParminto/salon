@@ -224,8 +224,8 @@
     </div>
   </section>
   <!--/ Services /-->
-  <div style="text-align:center; margin-top: 10px;">
-    <button type="submit" style="background-color:#2ec96a;" class="btn btn-default">Booking Now</button> 
+   <div style="text-align:center; margin-top: 10px;">
+    <a class="nav-link" href="pemesanan.php"><button type="button" style="background-color:#2ec96a;" class="btn btn-default">Booking Now</button></a>
   </div>
 <?php
 	include("footer.php");
