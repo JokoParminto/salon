@@ -12,8 +12,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="apple-touch-icon" sizes="57x57" href="assets/core/favicons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="assets/core/favicons/apple-icon-60x60.png">
+    <!-- <link rel="apple-touch-icon" sizes="57x57" href="assets/core/favicons/apple-icon-57x57.png"> -->
+    <!-- <link rel="apple-touch-icon" sizes="60x60" href="assets/core/favicons/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="assets/core/favicons/apple-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="76x76" href="assets/core/favicons/apple-icon-76x76.png">
     <link rel="apple-touch-icon" sizes="114x114" href="assets/core/favicons/apple-icon-114x114.png">
@@ -24,10 +24,10 @@
     <link rel="icon" type="image/png" sizes="192x192"  href="assets/core/favicons/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/core/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="assets/core/favicons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/core/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/core/favicons/favicon-16x16.png"> -->
     <link rel="manifest" href="assets/core/favicons/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="assets/core/favicons/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="#">
     <meta name="theme-color" content="#ffffff">
 
     <title>Salon Kanzai</title>
@@ -157,12 +157,12 @@
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
                         <li class="nav-label">Home</li>                        
-                          <?php if (($_SESSION['level'] == 0)) { ?>
-                          <li> <a class="" href="layanan.php" aria-expanded="false"><i class="fa fa-bars"></i><span class="hide-menu">Input Data Layanan</span></a> </li>
-                          <!-- <li> <a class="" href="laporan_tenaga_medis.php" aria-expanded="false"><i class="fa fa-tasks"></i><span class="hide-menu">Laporan </span></a> </li>
-                          <li> <a class="" href="obat.php" aria-expanded="false"><i class="fa fa-thermometer-0"></i><span class="hide-menu">Obat </span></a> </li>
-                          <li> <a class="" href="pegawai.php" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Tenaga Medis </span></a> </li>
-                          <li> <a class="" href="rekam_medis.php" aria-expanded="false"><i class="fa fa-heartbeat"></i><span class="hide-menu">Rekam Medis </span></a></li> -->
+                          <?php if (($_SESSION['level'] == 1)) { ?>
+                          <li> <a class="" href="layanan.php" aria-expanded="false"><i class="fa fa-file-text"></i><span class="hide-menu">Input Data Layanan</span></a> </li>
+                          <li> <a class="" href="transaksi.php" aria-expanded="false"><i class="fa fa-money"></i><span class="hide-menu">Transaksi</span></a> </li>
+                          <li> <a class="" href="daftar_pemesan.php" aria-expanded="false"><i class="fa fa-database"></i><span class="hide-menu">Data Pemesan </span></a> </li>
+                          <!-- <li> <a class="" href="pegawai.php" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Tenaga Medis </span></a> </li> -->
+                          <!-- <li> <a class="" href="rekam_medis.php" aria-expanded="false"><i class="fa fa-heartbeat"></i><span class="hide-menu">Rekam Medis </span></a></li> -->
                           <?php } ?>
                           <?php if (($_SESSION['level'] == 0)) { ?>
                           <li> <a class="" href="laporan.php" aria-expanded="false"><i class="fa fa-tasks"></i><span class="hide-menu">Laporan </span></a> </li>

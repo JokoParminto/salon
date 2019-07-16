@@ -17,7 +17,7 @@
                     <h1 class="intro-title mb-4">
                       <span class="color-b">Price Off </span> Perawatan Wajah</h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
+                      <a href="#"><span class="price-a">price | Rp. 12.000</span></a>
                     </p>
                   </div>
                 </div>
@@ -39,7 +39,7 @@
                     <h1 class="intro-title mb-4">
                       <span class="color-b">Free </span> Manicure</h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
+                      <a href="#"><span class="price-a">price | Rp. 12.000</span></a>
                     </p>
                   </div>
                 </div>
@@ -61,7 +61,7 @@
                     <h1 class="intro-title mb-4">
                       <span class="color-b">Price Off </span> Cuci dan blow</h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
+                      <a href="#"><span class="price-a">price | Rp. 12.000</span></a>
                     </p>
                   </div>
                 </div>

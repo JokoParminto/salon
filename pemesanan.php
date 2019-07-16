@@ -21,7 +21,45 @@
   box-shadow: none;
   border-color: #878787;
 }
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.alert.success {background-color: #4CAF50;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 </style>
+<script>
+  var close = document.getElementsByClassName("closebtn");
+  var i; 
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function(){
+      var div = this.parentElement;
+      div.style.opacity = "0";
+      setTimeout(function(){ div.style.display = "none"; }, 600);
+    }
+  }
+</script>
   <!--/ Gambar Slide/-->
   <div class="intro intro-carousel">
     <div id="carousel" class="owl-carousel owl-theme">
@@ -94,7 +132,17 @@
     </div>
   </div>
   <!--/ Gambar Slide /-->
+
   <div class="container">
+    <?php
+      if (!empty($_SESSION['pesan'])) {
+        echo "<div class='alert success'>
+              <span class='closebtn'>&times;</span>";
+        echo $_SESSION['pesan'];
+        echo "</div>";
+      }
+      unset($_SESSION['pesan']);
+    ?>
       <div class="row">
         <div class="col-md-12">
           <div class="title-wrap d-flex justify-content-between">
@@ -106,22 +154,30 @@
       </div>
       <div class="row">
         <div class="basic-form" style="margin-left:5%;">
-          <form action="layanan_action.php" method="post"  enctype="multipart/form-data">
+          <form action="pesan/pemesanan_action.php" method="post">
             <div class="form-group">
               <label for="">Pilih Layanan :</label> </br>
-            <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
+            </div>
+            <?php
+            $query="select * from service ";
+            $data = mysqli_query($db, $query);
+            while ($isi = mysqli_fetch_assoc($data)) { 
+            ?>
+            <div class="form-group">
+              <?php echo "<input type='checkbox' name='layanan[]' value='".$isi['service_id'].$isi['service_name']."'> ".$isi['service_name']."<br>";?>
+            <!-- <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br> -->
+            </div>
+            <?php }
+            $db->close();
+            ?>
+            <div class="form-group">
+              <label for="">Tanggal Pemesanan</label>
+              <input type="date" class="form-control"  id="tanggal"  name="tanggal" >
             </div>
             <div class="form-group">
-              <label for="">Harga</label>
-              <input type="time" class="form-control" name="service_price" placeholder="Harga" id="service_price">
-            </div>
-            <div class="form-group">
-              <label for="">Deskripsi</label>
-              <textarea name="service_desc" class="form-control" id="service_desc" ></textarea>
-            </div>
-            <div class="form-group">
-              <label for="">Upload Gambar</label>
-              <input type="file" class="form-control" name="service_photo" value="service_photo" id="service_photo">
+              <label for="">Jam Pemesanan</label> : 
+              <input type="number" min="0" max="16" name= "jam" placeholder="16" id="jam">:
+              <input type="number" min="0" max="59" name= "menit" placeholder="00" id="menit">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>         
           </form>

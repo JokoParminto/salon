@@ -28,11 +28,14 @@
 			}
 			if (mysqli_num_rows($result) == 1 || mysqli_num_rows($result) == 0) {
 				$_SESSION['is_logged_in'] = 1;
-				$_SESSION['user_id'] =  $row['user_access_officer_id'];
+				if ($row['user_access_type'] == 'owner' || $row['user_access_type'] == 'admin' ) {
+					$_SESSION['user_id'] =  $row['user_access_officer_id'];
+				} else {
+					$_SESSION['user_id'] =  $row['user_access_member_id'];					
+				}
 				$_SESSION['user_jabatan'] = $row['user_access_name'];
 				$_SESSION['user_name'] = $row['user_access_name'];
 				$_SESSION['level'] = $row['user_access_level'];
-				// print_r($_SESSION);exit();
 				if (empty($_SESSION['level'])) {
 					header("location: index-login.php");
 				} else if ($_SESSION['level'] == 2) {
