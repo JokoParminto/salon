@@ -37,6 +37,7 @@
         LEFT JOIN member ON  member.member_id = reservation.reservation_member_id 
         WHERE reservation_member_id = '$member_id'
         AND reservation_date = '$tanggal'
+		AND reservation_status = 'ok'
       ";
       $dataTot= mysqli_query($db, $sql);
       $tot = mysqli_fetch_assoc($dataTot);
@@ -77,6 +78,7 @@
                           LEFT JOIN member ON  member.member_id = reservation.reservation_member_id 
                           WHERE reservation_member_id = '$member_id'
                           AND reservation_date = '$tanggal'
+						  AND reservation_status = 'ok'
                         ";
                         $data = mysqli_query($db, $query);
                         while ($isi = mysqli_fetch_assoc($data)) { 

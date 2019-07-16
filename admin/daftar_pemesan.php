@@ -34,6 +34,7 @@
 											<th>Layanan</th>
 											<th>Harga</th>
 											<th>Tanggal Pemesanan</th>
+											<th>Jam Pemesanan</th>
 											<th>Status Pemesanan</th>
 											<th>Aksi</th>
 										</tr>
@@ -57,6 +58,7 @@
 													echo "<th>" . $isi["service_name"].  "</th>";
 													echo "<th>" ."Rp"." ".$isi["service_price"].  "</th>";
 													echo "<th>" . $isi["reservation_date"].  "</th>";
+													echo "<th>" . $isi["reservation_time"].  "</th>";
 													echo "<th>" . $isi["reservation_status"].  "</th>";
 													echo "<th><a href='pemesananedit.php?reservation_id=".$isi['reservation_id']."'>Edit</a> || <a href='transaksi_insert.php?reservation_id=".$isi['reservation_id']."&reservation_date=".$isi['reservation_date']."&reservation_member_id=".$isi['reservation_member_id']."'>Proses Transaksi</a></th>";
 													echo "</tr>";

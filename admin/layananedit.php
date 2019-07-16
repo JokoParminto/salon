@@ -1,5 +1,5 @@
 <?php
-	include("header.php");
+	include("header-admin.php");
 
 	$service_id = isset($_GET['service_id']) ? $_GET['service_id'] : '';
     $query="SELECT * FROM service WHERE service_id= '$service_id'";

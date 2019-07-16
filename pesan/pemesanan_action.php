@@ -1,20 +1,26 @@
 <?php
   include("../connection/connection.php");
+  $reservation_id = null;
+  $status_pesan = '';
   $member_id = $_SESSION['user_id'];
   $id_layanan = $_POST['layanan'];
-  $reservation_id = $_POST['reservation_id'];
-  $status_pesan = $_POST['reservation_status'];
+  if (!empty($_POST['reservation_id'])) {
+    $reservation_id = $_POST['reservation_id'];
+  }
+  if (!empty($_POST['reservation_status'])) {
+    $status_pesan = $_POST['reservation_status'];
+  }
   $implode_checkbox =  implode(", ",$_POST['layanan']);
 	$tanggal = $_POST['tanggal'];
 	$jam = $_POST['jam'];
   $menit = $_POST['menit'];
   $time = $jam.":".$menit.":00";
-	$id_reservation_delete	= isset($_GET['reservation_id']) ? $_GET['reservation_id'] : '';
+	// $id_reservation_delete	= isset($_GET['reservation_id']) ? $_GET['reservation_id'] : '';
 	$today = date('Y-m-d H:i:s');
 	$simpan = "true";
 	$valid = "";
 	$aksi = "";
-  if ($id_layanan !== null) {
+  if (!empty($id_layanan) && $reservation_id == null) {
     $aksi = "Input"; 
     foreach ($id_layanan as $key => $value) {
       $sql = "INSERT INTO reservation 

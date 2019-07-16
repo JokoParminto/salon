@@ -164,7 +164,7 @@
             while ($isi = mysqli_fetch_assoc($data)) { 
             ?>
             <div class="form-group">
-              <?php echo "<input type='checkbox' name='layanan[]' value='".$isi['service_id'].$isi['service_name']."'> ".$isi['service_name']."<br>";?>
+              <?php echo "<input type='checkbox' name='layanan[]' value='".$isi['service_id']."'> ".$isi['service_name']."<br>";?>
             <!-- <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br> -->
             </div>
             <?php }

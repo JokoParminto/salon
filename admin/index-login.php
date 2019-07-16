@@ -1,8 +1,8 @@
 <?php
-	include('admin/login.php'); // Include Login Script
+	include('login.php'); // Include Login Script
 	if ((isset($_SESSION['username']) != '')) 
 	{
-		header('Location: admin/home.php');
+		header('Location: home.php');
 	}
 ?>
 <!DOCTYPE html>
