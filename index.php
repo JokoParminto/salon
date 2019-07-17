@@ -179,8 +179,8 @@
           </div>
         </div>
       </div>
-      <div id="property-carousel" class="owl-carousel owl-theme">
-      <?php
+    <div id="property-carousel" class="owl-carousel owl-theme">
+        <?php
 	      $query="select * from service ";
         $dataPasien = mysqli_query($db, $query);
         while ($isi = mysqli_fetch_assoc($dataPasien)) { ?>

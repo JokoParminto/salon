@@ -1,3 +1,6 @@
+<?php
+	include("connection/connection.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -242,6 +245,49 @@
         </div>
       </div>
       <div id="property-carousel" class="owl-carousel owl-theme">
+        <?php
+	      $query="select * from service ";
+        $dataPasien = mysqli_query($db, $query);
+        while ($isi = mysqli_fetch_assoc($dataPasien)) { ?>
+          <div class="carousel-item-b">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+              	<?php echo "<img src='admin/images/".$isi["service_photo"]."'  alt='' class='img-a img-fluid' />"; ?>
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                    	<?php echo "<a href='property-single.html'>".$isi["service_name"]; ?>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <?php echo "<span class='price-a'>Harga "." | "."Rp"." ".$isi["service_price"]."</span>"; ?>
+                      <!-- <span class="price-a">Price | $ 12.000</span> -->
+                    </div>
+                    <a href="#" class="link-a">
+                      <span class="ion-ios-arrow-forward"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Durasi</h4> 
+                        <span>60 Menit
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       <?php }
+       $db->close();
+       ?>
+    </div>
+      <!-- <div id="property-carousel" class="owl-carousel owl-theme">
         <div class="carousel-item-b">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
@@ -377,7 +423,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
   <div style="text-align:center; margin-top: 10px;">
@@ -386,7 +432,7 @@
   <!--/ Services /-->
 
 <!--/ footer Star /-->
-<section class="section-footer">
+  <section class="section-footer">
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-4">

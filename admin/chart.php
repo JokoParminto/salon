@@ -54,7 +54,7 @@
                    SELECT DAY(member_created_at) AS hari, COUNT(member_id) as total
                   FROM member
                   WHERE MONTH(member_created_at) = '$parsing'
-                  GROUP BY member_created_at
+                  GROUP BY hari
                 ";
                 $result = mysqli_query($db, $strQuery);
                 if ($result) {

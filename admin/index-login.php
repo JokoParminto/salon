@@ -34,7 +34,7 @@
     <meta name="msapplication-TileImage" content="assets/core/favicons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Puskesmas</title>
+    <title>Login</title>
     <!-- Bootstrap Core CSS -->
     <link href="assets/core/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
