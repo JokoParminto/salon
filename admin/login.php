@@ -36,7 +36,7 @@
 				$_SESSION['user_jabatan'] = $row['user_access_name'];
 				$_SESSION['user_name'] = $row['user_access_name'];
 				$_SESSION['level'] = $row['user_access_level'];
-				if (empty($_SESSION['level'])) {
+				if ($_SESSION['level'] == null) {
 					header("location: index-login.php");
 				} else if ($_SESSION['level'] == 2) {
 					header("location: ../index.php");

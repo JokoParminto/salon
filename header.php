@@ -51,15 +51,15 @@
           <li class="nav-item">
             <a class="nav-link active" href="index.php">Home</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#">About</a>
-          </li>
+          </li> -->
           <li class="nav-item">
-            <a class="nav-link" href="#">Service</a>
+            <a class="nav-link" href="history_pemesanan.php">Transaksi</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
-          </li>
+          </li> -->
           <li class="nav-item" style="margin-left: 32%;">
             <a class="nav-link" href="admin/logout.php"><button type="button" href="admin/logout.php " style="background-color:#2ec96a;" class="btn btn-default">logout</button></a>
           </li>
