@@ -45,15 +45,15 @@
           <li class="nav-item">
             <a class="nav-link active" href="index.php">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#"">About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Service</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
-          </li>
+          </li> -->
           <li class="nav-item" style="margin-left: 32%;">
             <a class="nav-link" href="admin/index-login.php"><button type="button" style="background-color:#2ec96a;" class="btn btn-default">Login</button></a>
           </li>
