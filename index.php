@@ -4,7 +4,7 @@
   <!--/ Gambar Slide/-->
   <div class="intro intro-carousel">
     <div id="carousel" class="owl-carousel owl-theme">
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url(img/blank-slide.png)">
+      <div class="carousel-item-a intro-item bg-image" style="background-image: url(img/coloring.jpg)">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -15,7 +15,7 @@
                     <p class="intro-title-top">Kanzai Salon
                       </p>
                     <h1 class="intro-title mb-4">
-                      <span class="color-b">Price Off </span> Coloring</h1>
+                      <span class="color-b">Price Off </span>Coloring</h1>
                     <p class="intro-subtitle intro-price">
                       <a href="#"><span class="price-a">price | Rp. 275.000</span></a>
                     </p>
@@ -26,7 +26,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url(img/blank-slide.png)">
+      <div class="carousel-item-a intro-item bg-image" style="background-image: url(img/potong.jpg)">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -37,9 +37,9 @@
                     <p class="intro-title-top">Kanzai Salon
                       <br> 78345</p>
                     <h1 class="intro-title mb-4">
-                      <span class="color-b">Free </span> Manicure</h1>
+                      <span class="color-b">Price Off </span> Potong Rambut</h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">price | Rp. 12.000</span></a>
+                      <a href="#"><span class="price-a">price | Rp. 20.000</span></a>
                     </p>
                   </div>
                 </div>
@@ -48,7 +48,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url(img/blank-slide.png)">
+      <div class="carousel-item-a intro-item bg-image" style="background-image: url(img/Rambut.jpg)">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -59,9 +59,9 @@
                     <p class="intro-title-top">Kanzai Salon
                       <br> 78345</p>
                     <h1 class="intro-title mb-4">
-                      <span class="color-b">Price Off </span> Cuci dan blow</h1>
+                      <span class="color-b">Promo </span> Creambath Loreal</h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">price | Rp. 12.000</span></a>
+                      <a href="#"><span class="price-a">price | Rp. 60.000</span></a>
                     </p>
                   </div>
                 </div>

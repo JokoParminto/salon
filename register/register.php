@@ -85,6 +85,12 @@
                                       <textarea class="form-control" name="member_address" class="form-control" cols="30" rows="10" id="member_address"></textarea>
                                   </div>
                                   <div class="form-group">
+                                    <label for="">Jenis Kelamin</label></br>
+                                      <input  type="radio" name="gender" value="laki"> laki -laki
+                                      <input  type="radio" name="gender" value="perempuan"> Perempuan<br>
+                                      <!-- <textarea class="form-control" name="member_address" class="form-control" cols="30" rows="10" id="member_address"></textarea> -->
+                                  </div>
+                                  <div class="form-group">
                                     <label for="">Tanggal Lahir</label>
                                     <input type="date" class="form-control" name="member_birthdate" id="member_birthdate">
                                   </div>

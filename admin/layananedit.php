@@ -33,7 +33,7 @@
 						<div class="tab-pane active show" id="input" role="tabpanel">
 							<div class="p-20">
 								<div class="basic-form">
-									<form action="layanan_action.php" method="post">
+									<form action="layanan_action.php" method="post" enctype="multipart/form-data">
 										<input type="hidden" class="form-control" name="service_id" id="service_id" value="<?= $isi['service_id'];?>">
 										<div class="form-group">
 											<label for="">Nama Layanan</label>
@@ -42,6 +42,10 @@
 										<div class="form-group">
 											<label for="">Harga</label>
 											<input type="number" name="service_price" class="form-control" cols="30" rows="10" id="service_price" value="<?=$isi['service_price']?>">
+										</div>
+										<div class="form-group">
+											<label for="">Upload Gambar</label>
+											<input type="file" class="form-control" name="service_photo" value="service_photo" id="service_photo">
 										</div>
 										<button type="submit" class="btn btn-default">Submit</button>         
 									</form>
@@ -52,10 +56,12 @@
 							<div class="table-responsive m-t-40">
 								<table id="datatable-pasien" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
 									<thead>
-									<tr>
-										<th>Nama Layanan</th>
-										<th>Harga</th>
-										<th>Aksi</th>
+										<tr>
+											<th>Nama Layanan</th>
+											<th>Harga</th>
+											<th>Deskripsi</th>
+											<th>Gambar</th>
+											<th>Aksi</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -66,6 +72,8 @@
 													echo "<tr>";
 													echo "<th>" . $isi["service_name"].  "</th>";
 													echo "<th>" . $isi["service_price"].  "</th>";
+													echo "<th>" . $isi["service_desc"].  "</th>";
+													echo "<th>" .  "<img src='images/".$isi["service_photo"]."' width='100px' height='100px'/>"."</th>";
 													echo "<th><a href='layananedit.php?service_id=".$isi['service_id']."'>Edit</a> || <a href='layanan_action.php?service_id=".$isi['service_id']."&service_name=".$isi['service_name']."'>Delete</a></th>";
 													echo "</tr>";
 												}

@@ -1,13 +1,16 @@
 <?php
 	include("../connection/connection.php");
+	// var_dump($_FILES['update_photo']['name']);exit;
 	$service_id = $_POST['service_id']; 
 	$service_name = $_POST['service_name'];
 	$service_price = $_POST['service_price'];
 	$service_desc = $_POST['service_desc'];
 	$foto = $_FILES['service_photo']['name'];
-	$tmp = $_FILES['service_photo']['tmp_name'];
-	$fotobaru = date('dmYHis').$foto;
-	$path = "images/".$fotobaru;
+	if ($foto !== '') {
+		$tmp = $_FILES['service_photo']['tmp_name'];
+		$fotobaru = date('dmYHis').$foto;
+		$path = "images/".$fotobaru;
+	}
 	$id_service_delete	= isset($_GET['service_id']) ? $_GET['service_id'] : '';
 	$today = date('Y-m-d H:i:s');
 	$simpan = "true";
@@ -39,11 +42,20 @@
 			}
 		} else if ($_POST['service_id'] !== '' && $id_service_delete == '') {
 			$aksi = "Update";
-			$sql = "UPDATE service SET 
-				service_name='$service_name',
-				service_price='$service_price',
-				service_updates_at='$today'
-			where service_id='$service_id'";
+			if ($foto == '') {
+				$sql = "UPDATE service SET 
+					service_name='$service_name',
+					service_price='$service_price',
+					service_updates_at='$today'
+				where service_id='$service_id'";
+			} else {
+				$sql = "UPDATE service SET 
+					service_name='$service_name',
+					service_price='$service_price',
+					service_photo='$fotobaru',
+					service_updates_at='$today'
+				where service_id='$service_id'";
+			}
 		} else {
 			$aksi = "Delete";
 			$sql = "DELETE FROM service where service_id = '$id_service_delete'";

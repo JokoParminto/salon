@@ -1,11 +1,12 @@
 <?php
-	include("../connection/connection.php");
+  include("../connection/connection.php");
   $member_name = $_POST['member_name'];
 	$member_address = $_POST['member_address'];
 	$member_birthdate = $_POST['member_birthdate'];
 	$member_phone = $_POST['member_phone'];
+  $jenis_kelamin = $_POST['gender'];
 	$username = $_POST['username'];
-	$password = md5($_POST['password']);
+  $password = md5($_POST['password']);
 	$id_service_delete	= isset($_GET['service_id']) ? $_GET['service_id'] : '';
   $today = date('Y-m-d H:i:s');
   $reg_date = date('Y-m-d');
@@ -18,6 +19,7 @@
     member_address,
     member_birthdate,
     member_phone,
+    member_gender,
     member_created_at,
     member_updated_at
   ) VALUES (
@@ -25,6 +27,7 @@
     '$member_address',
     '$member_birthdate',
     '$member_phone',
+    '$jenis_kelamin',
     '$today',
     '$today'
   )";
