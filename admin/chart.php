@@ -44,7 +44,7 @@
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
                 <input class="btn btn-primary" type="button" value="submit" id="reloadLaporanMember" data="data-member"/>
-                  <button type="reset" class="btn btn-primary">reset</button>
+                  <!-- <button type="reset" class="btn btn-primary">reset</button> -->
               </div>
             </div class="table-responsive" >
               <?php
@@ -116,7 +116,7 @@
                     $dataseries1=array();
                     while($row = mysqli_fetch_array($result)) {
                     array_push($categoryArray, array(
-                      "label" => $row['hari']));
+                      "label" => 'hari ke-'.$row['hari']));
                       array_push($dataseries1, array(
                       "value" => $row['total']));
                     }
@@ -141,7 +141,7 @@
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
                 <input class="btn btn-primary" type="button" value="submit" id="reloadLaporanTransaksi" data="data-transaksi"/>
-                  <button type="reset" class="btn btn-primary">reset</button>
+                  <!-- <button type="reset" class="btn btn-primary">reset</button> -->
               </div>
             </div class="table-responsive" >
               <?php
@@ -213,7 +213,7 @@
                     $dataseries1=array();
                     while($row = mysqli_fetch_array($result)) {
                     array_push($categoryArray, array(
-                      "label" => $row['hari']));
+                      "label" => 'hari ke-'.$row['hari']));
                       array_push($dataseries1, array(
                       "value" => $row['total']));
                     }

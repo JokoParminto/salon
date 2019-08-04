@@ -72,7 +72,7 @@
                 <div class="col-lg-8">
                   <div class="intro-body">
                     <p class="intro-title-top">Kanzai Salon
-                      <br> 78345</p>
+                      </p>
                     <h1 class="intro-title mb-4">
                       <span class="color-b">Price Off </span> Perawatan Wajah</h1>
                     <p class="intro-subtitle intro-price">

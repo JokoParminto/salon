@@ -13,7 +13,7 @@
                 <div class="col-lg-8">
                   <div class="intro-body">
                     <p class="intro-title-top">Kanzai Salon
-                      <br> 78345</p>
+                      </p>
                     <h1 class="intro-title mb-4">
                       <span class="color-b">Price Off </span> Coloring</h1>
                     <p class="intro-subtitle intro-price">
@@ -99,8 +99,7 @@
             </div>
             <div class="card-body-c">
               <p class="content-c">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Menyediakan product yang unggul dan aman yaitu ada Loreal, Makarizo, dan Matrix.
               </p>
             </div>
             <div class="card-footer-c">
@@ -122,8 +121,7 @@
             </div>
             <div class="card-body-c">
               <p class="content-c">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Tidak akan mengecewakan jika potong rambut disini, karena disini karyawannya sudah profesional.
               </p>
             </div>
             <div class="card-footer-c">
@@ -145,9 +143,7 @@
             </div>
             <div class="card-body-c">
               <p class="content-c">
-                Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                convallis a pellentesque
-                nec, egestas non nisi.
+              Menggunakan bahan yang aman dan tidak merusak rambut justru rambut menjadi halus.
               </p>
             </div>
             <div class="card-footer-c">

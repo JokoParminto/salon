@@ -9,16 +9,16 @@
             </div>
             <div class="w-body-a">
               <p class="w-text-a color-text-a">
-                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
-                sed aute irure.
+              Salon yang terletak di jl.Paris KM 25 ini sudah mempunyai nama yang terenal dikalangan masyarakat di Bantul Selatan karena 
+              pelayanannya yang memuaskan. Tidak percaya? Silahkan mencoba.
               </p>
             </div>
             <div class="w-footer-a">
               <ul class="list-unstyled">
                 <li class="color-a">
-                  <span class="color-text-a">Phone .</span> contact@example.com</li>
+                  <span class="color-text-a">Email .</span> salonkanzai@gmail.com</li>
                 <li class="color-a">
-                  <span class="color-text-a">Email .</span> +678567</li>
+                  <span class="color-text-a">Phone .</span> +6287812266756</li>
               </ul>
             </div>
           </div>

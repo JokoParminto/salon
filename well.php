@@ -69,7 +69,7 @@
   <!--/ Gambar Slide/-->
   <div class="intro intro-carousel">
     <div id="carousel" class="owl-carousel owl-theme">
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url(img/blank-slide.png)">
+      <div class="carousel-item-a intro-item bg-image" style="background-image: url(img/coloring.jpg)">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -78,7 +78,7 @@
                 <div class="col-lg-8">
                   <div class="intro-body">
                     <p class="intro-title-top">Kanzai Salon
-                      <br> 78345</p>
+                      </p>
                     <h1 class="intro-title mb-4">
                       <span class="color-b">Price Off </span>Coloring</h1>
                     <p class="intro-subtitle intro-price">
@@ -91,7 +91,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url(img/blank-slide.png)">
+      <div class="carousel-item-a intro-item bg-image" style="background-image: url(img/potong.jpg)">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -102,9 +102,9 @@
                     <p class="intro-title-top">Kanzai Salon
                       <br> 78345</p>
                     <h1 class="intro-title mb-4">
-                      <span class="color-b">Free </span> Manicure</h1>
+                      <span class="color-b">Price Off </span> Potong Rambut</h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">price | Rp. 12.000</span></a>
+                      <a href="#"><span class="price-a">price | Rp. 20.000</span></a>
                     </p>
                   </div>
                 </div>
@@ -113,7 +113,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url(img/blank-slide.png)">
+      <div class="carousel-item-a intro-item bg-image" style="background-image: url(img/Rambut.jpg)">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -124,9 +124,9 @@
                     <p class="intro-title-top">Kanzai Salon
                       <br> 78345</p>
                     <h1 class="intro-title mb-4">
-                      <span class="color-b">Price Off </span> Cuci dan blow</h1>
+                      <span class="color-b">Promo </span> Creambath Loreal</h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">price | Rp. 12.000</span></a>
+                      <a href="#"><span class="price-a">price | Rp. 60.000</span></a>
                     </p>
                   </div>
                 </div>
@@ -164,14 +164,13 @@
             </div>
             <div class="card-body-c">
               <p class="content-c">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Menyediakan product yang unggul dan aman yaitu ada Loreal, Makarizo, dan Matrix.
               </p>
             </div>
             <div class="card-footer-c">
-              <a href="#" class="link-c link-icon">Read more
+              <!-- <a href="#" class="link-c link-icon">Read more
                 <span class="ion-ios-arrow-forward"></span>
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
@@ -187,14 +186,13 @@
             </div>
             <div class="card-body-c">
               <p class="content-c">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Tidak akan mengecewakan jika potong rambut disini, karena disini karyawannya sudah profesional.
               </p>
             </div>
             <div class="card-footer-c">
-              <a href="#" class="link-c link-icon">Read more
+              <!-- <a href="#" class="link-c link-icon">Read more
                 <span class="ion-ios-arrow-forward"></span>
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
@@ -210,15 +208,13 @@
             </div>
             <div class="card-body-c">
               <p class="content-c">
-                Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                convallis a pellentesque
-                nec, egestas non nisi.
+                Menggunakan bahan yang aman dan tidak merusak rambut justru rambut menjadi halus.
               </p>
             </div>
             <div class="card-footer-c">
-              <a href="#" class="link-c link-icon">Read more
+              <!-- <a href="#" class="link-c link-icon">Read more
                 <span class="ion-ios-arrow-forward"></span>
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
@@ -252,7 +248,7 @@
           <div class="carousel-item-b">
             <div class="card-box-a card-shadow">
               <div class="img-box-a">
-              	<?php echo "<img src='admin/images/".$isi["service_photo"]."'  alt='' class='img-a img-fluid' />"; ?>
+              	<?php echo "<img src='admin/images/".$isi["service_photo"]."'  alt='' class='img-a img-fluid' style='width:100%;height:100%'/>"; ?>
               </div>
               <div class="card-overlay">
                 <div class="card-overlay-a-content">
@@ -442,16 +438,16 @@
             </div>
             <div class="w-body-a">
               <p class="w-text-a color-text-a">
-                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
-                sed aute irure.
+                Salon yang terletak di jl.Paris KM 25 ini sudah mempunyai nama yang terenal dikalangan masyarakat di Bantul Selatan karena 
+                pelayanannya yang memuaskan. Tidak percaya? Silahkan mencoba.
               </p>
             </div>
             <div class="w-footer-a">
               <ul class="list-unstyled">
                 <li class="color-a">
-                  <span class="color-text-a">Phone .</span> contact@example.com</li>
+                  <span class="color-text-a">Phone .</span> salonkanzai@gmail.com </li>
                 <li class="color-a">
-                  <span class="color-text-a">Email .</span> +678567</li>
+                  <span class="color-text-a">Email .</span> +6287812266756</li>
               </ul>
             </div>
           </div>
