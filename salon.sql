@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v11.21 (64 bit)
-MySQL - 10.1.41-MariaDB-0ubuntu0.18.04.1 : Database - salon
+MySQL - 10.3.14-MariaDB : Database - salon
 *********************************************************************
 */
 
@@ -12,7 +12,7 @@ MySQL - 10.1.41-MariaDB-0ubuntu0.18.04.1 : Database - salon
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`salon` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`salon` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
 
 USE `salon`;
 
@@ -63,7 +63,7 @@ DROP TABLE IF EXISTS `service`;
 CREATE TABLE `service` (
   `service_id` int(11) NOT NULL AUTO_INCREMENT,
   `service_name` varchar(30) DEFAULT NULL,
-  `service_desc` text,
+  `service_desc` text DEFAULT NULL,
   `service_price` int(11) DEFAULT NULL,
   `service_photo` varchar(250) DEFAULT NULL,
   `service_created_at` datetime DEFAULT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE `transaction` (
   `transaction_id` int(11) NOT NULL AUTO_INCREMENT,
   `transaction_member_id` int(11) NOT NULL,
   `transaction_officer_id` int(11) NOT NULL,
-  `transaction_status` enum('cancel','ok','confirmed','succes') DEFAULT NULL,
+  `transaction_status` enum('cancel','ok','confirmed','success') DEFAULT NULL,
   `transaction_date` datetime DEFAULT NULL,
   `transaction_created_at` datetime DEFAULT NULL,
   `transaction_updated_at` datetime DEFAULT NULL,
@@ -96,7 +96,7 @@ CREATE TABLE `transaction` (
 
 /*Data for the table `transaction` */
 
-insert  into `transaction`(`transaction_id`,`transaction_member_id`,`transaction_officer_id`,`transaction_status`,`transaction_date`,`transaction_created_at`,`transaction_updated_at`) values (7,2,2,'confirmed','2019-08-13 14:14:00','2019-08-20 18:53:39','2019-08-20 18:53:39');
+insert  into `transaction`(`transaction_id`,`transaction_member_id`,`transaction_officer_id`,`transaction_status`,`transaction_date`,`transaction_created_at`,`transaction_updated_at`) values (7,2,2,'ok','2019-08-13 14:14:00','2019-08-20 18:53:39','2019-08-20 18:53:39');
 
 /*Table structure for table `transaction_detail` */
 
