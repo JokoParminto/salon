@@ -43,6 +43,7 @@
 													member.*
 												FROM transaction 
 												JOIN member ON member.member_id = transaction.transaction_member_id
+												WHERE transaction.transaction_status <> 'success'
 												GROUP BY transaction.transaction_id 
                       ";
 											$dataTransaction= mysqli_query($db, $query);

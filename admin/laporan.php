@@ -74,38 +74,36 @@
 								<thead>
 									<tr>
 										<th>#</th>  
-                    <th>Nama</th>
-                    <th>Layanan</th>
-                    <!-- <th>Harga</th> -->
-                    <th>Tanggal Pemesanan</th>
-                    <th>Jam Pemesanan</th>
-                    <th>Status Pemesanan</th>
+										<th>Nama</th>
+										<th>Tanggal Pemesanan</th>
+										<th>Layanan</th>
+                    <th>Harga</th>
+										<th>Status Pemesanan</th>
 									</tr>
 								</thead>
 								<tbody>
 									<?php
 										$query="
-											SELECT
-                        reservation.*,
-                        service.service_name,
-                        service.service_price,
-                        member.member_name
-                      FROM reservation
-                      LEFT JOIN service ON service.service_id = reservation.reservation_service_id
-                      LEFT JOIN member ON  member.member_id = reservation.reservation_member_id
-                      GROUP BY reservation.reservation_member_id
+										SELECT
+											transaction.*,
+											transaction_detail.*,
+											service.*,
+											member.*
+										FROM transaction 
+										JOIN transaction_detail ON transaction_detail.transaction_detail_transaction_id = transaction.transaction_id
+										JOIN service ON service.service_id = transaction_detail.transaction_detail_service_id
+										JOIN member ON member.member_id = transaction.transaction_member_id
 										";
+										$i=1;
 										$data= mysqli_query($db, $query);
 										while ($isi = mysqli_fetch_assoc($data)) {
 												echo "<tr>";
-											echo "<th>" . $isi["reservation_id"].  "</th>";
-												echo "<th>" . $isi["member_name"].  "</th>";
-												echo "<th>" . $isi["service_name"].  "</th>";
-												// echo "<th>" ."Rp"." ".$isi["service_price"]. "</th>";
-												echo "<th>" . date('F j, Y',strtotime($isi["reservation_date"])).  "</th>";
-												echo "<th>" . $isi["reservation_time"].  "</th>";
-												echo "<th>" . $isi["reservation_status"].  "</th>";
-												echo "</tr>";
+													echo "<th>" . $i++.  "</th>";
+													echo "<th>" . $isi["member_name"].  "</th>";
+													echo "<th>" . $isi["transaction_date"].  "</th>";
+													echo "<th>" . $isi["service_name"].  "</th>";
+													echo "<th>" ."Rp"." ".$isi["service_price"].  "</th>";
+													echo "<th>" . $isi["transaction_status"].  "</th>";
 												echo "</tr>";
 											}
 											echo "</table>";
@@ -166,13 +164,12 @@
 							<table id="datatable-dataPemesanan" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
 								<thead>
 									<tr>
-                      <th>#</th>  
-											<th>Nama</th>
-											<th>Layanan</th>
-											<th>Harga</th>
-											<th>Tanggal Pemesanan</th>
-											<th>Jam Pemesanan</th>
-											<th>Status Pemesanan</th>
+										<th>#</th>  
+										<th>Nama</th>
+										<th>Tanggal Pemesanan</th>
+										<th>Layanan</th>
+										<th>Harga</th>
+										<th>Status Pemesanan</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -186,13 +183,14 @@
 										}
 										$query="
 											SELECT
-                        reservation.*,
-                        service.service_name,
-                        service.service_price,
-                        member.member_name
-                      FROM reservation
-                      LEFT JOIN service ON service.service_id = reservation.reservation_service_id
-                      LEFT JOIN member ON  member.member_id = reservation.reservation_member_id
+												transaction.*,
+												transaction_detail.*,
+												service.*,
+												member.*
+											FROM transaction 
+											JOIN transaction_detail ON transaction_detail.transaction_detail_transaction_id = transaction.transaction_id
+											JOIN service ON service.service_id = transaction_detail.transaction_detail_service_id
+											JOIN member ON member.member_id = transaction.transaction_member_id
                       WHERE 0 = 0
 											$sql_query
 											AND (reservation.reservation_status = 'cancel' OR reservation.reservation_status = 'confirmed') 

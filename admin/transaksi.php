@@ -53,7 +53,7 @@
 												echo "<th>" . $isi["member_name"].  "</th>";
 												echo "<th>" . $isi["transaction_date"].  "</th>";
 												echo "<th>" . $isi["transaction_status"].  "</th>";
-												echo "<th><a href='pemesananedit.php?transaction_id=".$isi['transaction_id']."'>Edit</a> || <a href='transaksi_detail.php?transaction_id=".$isi['transaction_id']."'>Detail</a></th>";
+												echo "<th><a href='transaksi_edit.php?transaction_id=".$isi['transaction_id']."'>Edit</a> || <a href='transaksi_detail.php?transaction_id=".$isi['transaction_id']."'>Detail</a></th>";
 												echo "</tr>";
 												}
                         echo "</table>";
@@ -91,7 +91,7 @@
 												echo "<th>" . $isi["member_name"].  "</th>";
 												echo "<th>" . $isi["transaction_date"].  "</th>";
 												echo "<th>" . $isi["transaction_status"].  "</th>";
-												echo "<th><a href='pemesananedit.php?transaction_id=".$isi['transaction_id']."'>Edit</a> || <a href='transaksi_detail.php?transaction_id=".$isi['transaction_id']."'>Detail</a></th>";
+												echo "<th><a href='transaksi_detail.php?transaction_id=".$isi['transaction_id']."'>Detail</a></th>";
 												echo "</tr>";
 												}
                         echo "</table>";
