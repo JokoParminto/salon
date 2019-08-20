@@ -157,7 +157,7 @@
                   service.*
                 FROM transaction 
                 JOIN transaction_detail ON transaction_detail.transaction_detail_transaction_id = transaction.transaction_id
-                LEFT JOIN service ON service.service_id = transaction_detail.transaction_detail_transaction_id
+                JOIN service ON service.service_id = transaction_detail.transaction_detail_service_id
                 WHERE transaction.transaction_member_id = '$id_member'
               ";
               $dataPasien= mysqli_query($db, $query);

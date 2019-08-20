@@ -32,7 +32,6 @@
 										<tr>
 											<th>Nama</th>
 											<th>Tanggal Pemesanan</th>
-											<th>Jam Pemesanan</th>
 											<th>Status Pemesanan</th>
 											<th>Aksi</th>
 										</tr>
@@ -50,10 +49,9 @@
 											while ($isi = mysqli_fetch_assoc($dataTransaction)) {
 													echo "<tr>";
 													echo "<th>" . $isi["member_name"].  "</th>";
-													echo "<th>" . $isi["service_name"].  "</th>";
 													echo "<th>" . $isi["transaction_date"].  "</th>";
 													echo "<th>" . $isi["transaction_status"].  "</th>";
-													echo "<th><a href='pemesananedit.php?reservation_id=".$isi['reservation_id']."'>Edit</a> || <a href='transaksi_insert.php?reservation_id=".$isi['reservation_id']."&reservation_date=".$isi['reservation_date']."&reservation_member_id=".$isi['reservation_member_id']."'>Proses Transaksi</a></th>";
+													echo "<th><a href='pemesananedit.php?transaction_id=".$isi['transaction_id']."'>Edit</a> || <a href='daftar_pemesan_detail.php?transaction_id=".$isi['transaction_id']."'>Detail</a></th>";
 													echo "</tr>";
 												}
                         echo "</table>";

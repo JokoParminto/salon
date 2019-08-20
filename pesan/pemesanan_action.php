@@ -1,14 +1,14 @@
 <?php
   include("../connection/connection.php");
-  $reservation_id = null;
-  $status_pesan = '';
+  $transaction_id = null;
+  $transaction_status = '';
   $member_id = $_SESSION['user_id'];
   $id_layanan = $_POST['layanan'];
-  if (!empty($_POST['reservation_id'])) {
-    $reservation_id = $_POST['reservation_id'];
+  if (!empty($_POST['transaction_id'])) {
+    $transaction_id = $_POST['transaction_id'];
   }
-  if (!empty($_POST['reservation_status'])) {
-    $status_pesan = $_POST['reservation_status'];
+  if (!empty($_POST['transaction_status'])) {
+    $transaction_status = $_POST['transaction_status'];
   }
   $implode_checkbox =  implode(", ",$_POST['layanan']);
 	$tanggal = $_POST['tanggal'];
@@ -21,7 +21,7 @@
 	$simpan = "true";
 	$valid = "";
 	$aksi = "";
-  if (!empty($id_layanan) && $reservation_id == null) {
+  if (!empty($id_layanan) && $transaction_id == null) {
     $aksi = "Input"; 
     // foreach ($id_layanan as $key => $value) {
       $sql = "INSERT INTO transaction 
@@ -73,9 +73,10 @@
     }
   } else {
     $aksi = "Update";
-    $sql = "UPDATE reservation SET 
-      reservation_status='$status_pesan'
-      where reservation_id='$reservation_id'";
+    $sql = "UPDATE transaction SET 
+      transaction_status='$transaction_status'
+      where transaction_id='$transaction_id'";
+      // var_dump($sql);exit;
     $service = mysqli_query($db, $sql);
   }
   if(!$service){

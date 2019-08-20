@@ -21,7 +21,7 @@
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs" role="tablist">
 						<li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#input" role="tab" aria-selected="true"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">Data Transaksi</span></a> </li>
-						<!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#daftar" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Daftar Layanan</span></a> </li> -->
+						<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#daftar" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Daftar Transaksi Berhasil</span></a> </li>
 					</ul>
 					<!-- Tab panes -->
 					<div class="tab-content tabcontent-border">
@@ -31,31 +31,68 @@
 									<thead>
 										<tr>
 											<th>Nama</th>
-											<th>Layanan</th>
-											<th>Harga</th>
 											<th>Tanggal Pemesanan</th>
 											<th>Status Pemesanan</th>
-											<th>tanggal Transaksi</th>
+											<th>Aksi</th>
 										</tr>
 									</thead>
 									<tbody>
 										<?php
-                      $query="SELECT *  
-                      FROM transaction
-                      JOIN reservation ON reservation.reservation_id = transaction.transaction_reservation_id
-                      LEFT JOIN service ON service.service_id = reservation.reservation_service_id
-                      LEFT JOIN member ON  member.member_id = reservation.reservation_member_id
-                      ";
+											$query="
+												SELECT
+													transaction.*,
+													member.*
+												FROM transaction 
+												JOIN member ON member.member_id = transaction.transaction_member_id
+												WHERE transaction.transaction_status = 'ok'
+												GROUP BY transaction.transaction_id 
+											";
 											$dataTransaction= mysqli_query($db, $query);
 											while ($isi = mysqli_fetch_assoc($dataTransaction)) {
-													echo "<tr>";
-													echo "<th>" . $isi["member_name"].  "</th>";
-													echo "<th>" . $isi["service_name"].  "</th>";
-													echo "<th>" . $isi["service_price"].  "</th>";
-													echo "<th>" . $isi["reservation_date"].  "</th>";
-													echo "<th>" . $isi["reservation_status"].  "</th>";
-													echo "<th>" . $isi["transaction_created_at"].  "</th>";
-													echo "</tr>";
+												echo "<tr>";
+												echo "<th>" . $isi["member_name"].  "</th>";
+												echo "<th>" . $isi["transaction_date"].  "</th>";
+												echo "<th>" . $isi["transaction_status"].  "</th>";
+												echo "<th><a href='pemesananedit.php?transaction_id=".$isi['transaction_id']."'>Edit</a> || <a href='transaksi_detail.php?transaction_id=".$isi['transaction_id']."'>Detail</a></th>";
+												echo "</tr>";
+												}
+                        echo "</table>";
+											// $db->close();
+										?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tab-pane p-20" id="daftar" role="tabpanel">
+							<div class="table-responsive m-t-40">
+								<table id="datatable-pasien" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+									<thead>
+										<tr>
+											<th>Nama</th>
+											<th>Tanggal Pemesanan</th>
+											<th>Status Pemesanan</th>
+											<th>Aksi</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+											$query="
+												SELECT
+													transaction.*,
+													member.*
+												FROM transaction 
+												JOIN member ON member.member_id = transaction.transaction_member_id
+												WHERE transaction.transaction_status = 'success'
+												GROUP BY transaction.transaction_id 
+											";
+											$dataTransaction= mysqli_query($db, $query);
+											while ($isi = mysqli_fetch_assoc($dataTransaction)) {
+												echo "<tr>";
+												echo "<th>" . $isi["member_name"].  "</th>";
+												echo "<th>" . $isi["transaction_date"].  "</th>";
+												echo "<th>" . $isi["transaction_status"].  "</th>";
+												echo "<th><a href='pemesananedit.php?transaction_id=".$isi['transaction_id']."'>Edit</a> || <a href='transaksi_detail.php?transaction_id=".$isi['transaction_id']."'>Detail</a></th>";
+												echo "</tr>";
 												}
                         echo "</table>";
 											$db->close();

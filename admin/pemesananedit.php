@@ -1,16 +1,13 @@
 <?php
 	include("header-admin.php");
 
-	$reservation_id = isset($_GET['reservation_id']) ? $_GET['reservation_id'] : '';
+	$transaction_id = isset($_GET['transaction_id']) ? $_GET['transaction_id'] : '';
     $query="SELECT
-      reservation.*,
-      service.service_name,
-      service.service_price,
-      member.member_name
-      FROM reservation
-      LEFT JOIN service ON service.service_id = reservation.reservation_service_id
-      LEFT JOIN member ON  member.member_id = reservation.reservation_member_id 
-      WHERE reservation_id= '$reservation_id'";
+				transaction.*,
+				member.*
+			FROM transaction 
+			JOIN member ON member.member_id = transaction.transaction_member_id
+			WHERE transaction.transaction_id = ".$transaction_id."";
     $hasil= mysqli_query($db, $query);
 		$isi = mysqli_fetch_assoc($hasil);
 ?>
@@ -42,66 +39,80 @@
 							<div class="p-20">
 								<div class="basic-form">
 									<form action="../pesan/pemesanan_action.php" method="post">
-										<input type="hidden" class="form-control" name="reservation_id" id="reservation_id" value="<?= $isi['reservation_id'];?>">
+										<input type="hidden" class="form-control" name="transaction_id" id="transaction_id" value="<?= $isi['transaction_id'];?>">
 										<div class="form-group">
-											<label for="">Nama Pelanggan</label>
+											<label for="">Nama Pemesan</label>
 											<input type="text" class="form-control" name="member_name" id="member_name" value="<?=$isi['member_name']?>"</readonly>
 										</div>
                     <div class="form-group">
-											<label for="">Nama Layanan</label>
-											<input type="text" class="form-control" name="service_name" id="service_name" value="<?=$isi['service_name']?>"</readonly>
+											<label for="">Tanggal Pemesanan</label>
+											<input type="text" class="form-control" name="transaction_date" id="transaction_date" value="<?=$isi['transaction_date']?>"</readonly>
 										</div>
-										<div class="form-group">
+										<!-- <div class="form-group">
 											<label for="">Harga</label>
 											  <input type="number" name="service_price" class="form-control" cols="30" rows="10" id="service_price" value="<?=$isi['service_price']?>"</readonly>
 										</div>
                     <div class="form-group">
 											<label for="">Tanggal Pesan</label>
 											  <input type="text" name="service_price" class="form-control" cols="30" rows="10" id="reservation_date" value="<?=$isi['reservation_date']?>"</readonly>
-										</div>
+										</div> -->
                     <div class="form-group">
 											<label for="">Status Pesan</label>
-											<select class="form-control" name="reservation_status" required="" id="reservation_status">
+											<select class="form-control" name="transaction_status" required="" id="transaction_status">
 												<!-- <option value="">Pilih Status</option> -->
 												<option value="confirmed" >Confirmed</option>
 												<option value="ok" >Ok</option>
-												<option value="close" >Close</option>
+												<!-- <option value="close" >Close</option> -->
 												<option value="cancel" >Cancel</option>
 											</select>
 										</div>
-										<button type="submit" class="btn btn-default">Submit</button>         
+										<button type="submit" class="btn btn-default" style="background-color: #1d8638;">Submit</button>         
 									</form>
 								</div>
 							</div>
 						</div>
-						<!-- <div class="tab-pane p-20" id="daftar" role="tabpanel">
-							<div class="table-responsive m-t-40">
-								<table id="datatable-pasien" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+						<div class="card-body" id="detail">
+							<div class="table-responsive">
+								<table class="table">
 									<thead>
-									<tr>
-										<th>Nama Layanan</th>
-										<th>Harga</th>
-										<th>Aksi</th>
+										<tr>
+											<th>#</th>
+											<th>Layanan</th>
+											<th>Harga</th>
+											<th>Tanggal Pemesanan</th>
+											<th>Status Pemesanan</th>
 										</tr>
 									</thead>
-									<tbody>
-										<?php
-											$query="select * from service ";
-											$dataPasien= mysqli_query($db, $query);
-											while ($isi = mysqli_fetch_assoc($dataPasien)) {
-													echo "<tr>";
-													echo "<th>" . $isi["service_name"].  "</th>";
-													echo "<th>" . $isi["service_price"].  "</th>";
-													echo "<th><a href='layananedit.php?service_id=".$isi['service_id']."'>Edit</a> || <a href='layanan_action.php?service_id=".$isi['service_id']."&service_name=".$isi['service_name']."'>Delete</a></th>";
-													echo "</tr>";
-												}
-												echo "</table>";
-											$db->close();
-										?>
+									<tbody id="dataobat">
+									<?php
+										$query="
+											SELECT
+												transaction.*,
+												transaction_detail.*,
+												service.*
+											FROM transaction 
+											JOIN transaction_detail ON transaction_detail.transaction_detail_transaction_id = transaction.transaction_id
+											JOIN service ON service.service_id = transaction_detail.transaction_detail_service_id
+											WHERE transaction.transaction_id = '$transaction_id'";
+										$i=1;
+										// var_dump($query);exit;
+										$dataResepDetail= mysqli_query($db, $query);
+										while ($isiResepDetail = mysqli_fetch_assoc($dataResepDetail)) {
+												echo "<tr>";
+												echo "<th>" . $i++.  "</th>";
+												echo "<th>" . $isiResepDetail["service_name"].  "</th>";
+												echo "<th>" ."Rp"." ".$isiResepDetail["service_price"].  "</th>";
+												echo "<th>" . $isiResepDetail["transaction_date"].  "</th>";
+												echo "<th>" . $isiResepDetail["transaction_status"].  "</th>";
+												echo "</tr>";
+											}
+											echo "</table>";
+										$db->close();
+									?>
 									</tbody>
 								</table>
 							</div>
-						</div> -->
+						</div>
 					</div>
 				</div>
 			</div>
