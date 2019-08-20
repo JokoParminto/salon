@@ -15,6 +15,7 @@
 	$jam = $_POST['jam'];
   $menit = $_POST['menit'];
   $time = $jam.":".$menit.":00";
+  $tanggal_ok = $tanggal.' '.$time;
 	// $id_reservation_delete	= isset($_GET['reservation_id']) ? $_GET['reservation_id'] : '';
 	$today = date('Y-m-d H:i:s');
 	$simpan = "true";
@@ -22,27 +23,54 @@
 	$aksi = "";
   if (!empty($id_layanan) && $reservation_id == null) {
     $aksi = "Input"; 
-    foreach ($id_layanan as $key => $value) {
-      $sql = "INSERT INTO reservation 
+    // foreach ($id_layanan as $key => $value) {
+      $sql = "INSERT INTO transaction 
       (
-        reservation_member_id,
-        reservation_service_id,
-        reservation_date,
-        reservation_time,
-        reservation_status,
-        reservation_created_at,
-        reservation_updated_at
+        transaction_member_id,
+        transaction_officer_id,
+        transaction_status,
+        transaction_date,
+        transaction_created_at,
+        transaction_updated_at
       ) VALUES (
         $member_id,
-        $id_layanan[$key],
-        '$tanggal',
-        '$time',
+        2,
         'confirmed',
+        '$tanggal_ok',
         '$today',
         '$today'
       )";
+      // var_dump($sql);exit;
       $service = mysqli_query($db, $sql);
-    } 
+      $latest_id_transaction = $db->insert_id;
+      if ($service) {
+       	foreach ($id_layanan as $key => $value) {
+          if ($id_layanan[$key] !== '') {
+            $query="
+              SELECT service_price
+              FROM service  
+              WHERE service.service_id = ".$id_layanan[$key]."";
+            $dataService= mysqli_query($db, $query);
+            $isi=mysqli_fetch_assoc($dataService);
+            $price = $isi['service_price'];
+            $sql = "INSERT INTO transaction_detail 
+            (
+              transaction_detail_transaction_id,
+              transaction_detail_service_id,
+              transaction_detail_total_price,
+              transaction_detail_created_at,
+              transaction_detail_updated_at
+            ) VALUES (
+              $latest_id_transaction,
+              $id_layanan[$key],
+              '$price',
+              '$today',
+              '$today'
+            )";
+          $detail_transaction = mysqli_query($db, $sql);
+				}
+      }
+    }
   } else {
     $aksi = "Update";
     $sql = "UPDATE reservation SET 

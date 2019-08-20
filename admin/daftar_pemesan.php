@@ -31,8 +31,6 @@
 									<thead>
 										<tr>
 											<th>Nama</th>
-											<th>Layanan</th>
-											<th>Harga</th>
 											<th>Tanggal Pemesanan</th>
 											<th>Jam Pemesanan</th>
 											<th>Status Pemesanan</th>
@@ -42,24 +40,19 @@
 									<tbody>
 										<?php
                       $query="SELECT
-                        reservation.*,
-                        service.service_name,
-                        service.service_price,
-                        member.member_name
-                      FROM reservation
-                      LEFT JOIN service ON service.service_id = reservation.reservation_service_id
-                      LEFT JOIN member ON  member.member_id = reservation.reservation_member_id
-                      GROUP BY reservation.reservation_id
+													transaction.*,
+													member.*
+												FROM transaction 
+												JOIN member ON member.member_id = transaction.transaction_member_id
+												GROUP BY transaction.transaction_id 
                       ";
 											$dataTransaction= mysqli_query($db, $query);
 											while ($isi = mysqli_fetch_assoc($dataTransaction)) {
 													echo "<tr>";
 													echo "<th>" . $isi["member_name"].  "</th>";
 													echo "<th>" . $isi["service_name"].  "</th>";
-													echo "<th>" ."Rp"." ".$isi["service_price"].  "</th>";
-													echo "<th>" . $isi["reservation_date"].  "</th>";
-													echo "<th>" . $isi["reservation_time"].  "</th>";
-													echo "<th>" . $isi["reservation_status"].  "</th>";
+													echo "<th>" . $isi["transaction_date"].  "</th>";
+													echo "<th>" . $isi["transaction_status"].  "</th>";
 													echo "<th><a href='pemesananedit.php?reservation_id=".$isi['reservation_id']."'>Edit</a> || <a href='transaksi_insert.php?reservation_id=".$isi['reservation_id']."&reservation_date=".$isi['reservation_date']."&reservation_member_id=".$isi['reservation_member_id']."'>Proses Transaksi</a></th>";
 													echo "</tr>";
 												}

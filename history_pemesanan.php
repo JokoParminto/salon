@@ -145,7 +145,6 @@
               <th>Layanan</th>
               <th>Harga</th>
               <th>Tanggal Pemesanan</th>
-              <th>Jam Pemesanan</th>
               <th>Status Pemesanan</th>
             </tr>
           </thead>
@@ -153,23 +152,21 @@
             <?php
               $id_member = $_SESSION['user_id'];
               $query="SELECT
-                  reservation.*,
-                  service.service_name,
-                  service.service_price,
-                  member.member_name
-                FROM reservation
-                LEFT JOIN service ON service.service_id = reservation.reservation_service_id
-                LEFT JOIN member ON  member.member_id = reservation.reservation_member_id
-                WHERE reservation.reservation_member_id = '$id_member'
+                  transaction.*,
+                  transaction_detail.*,
+                  service.*
+                FROM transaction 
+                JOIN transaction_detail ON transaction_detail.transaction_detail_transaction_id = transaction.transaction_id
+                LEFT JOIN service ON service.service_id = transaction_detail.transaction_detail_transaction_id
+                WHERE transaction.transaction_member_id = '$id_member'
               ";
               $dataPasien= mysqli_query($db, $query);
               while ($isi = mysqli_fetch_assoc($dataPasien)) {
                   echo "<tr>";
                   echo "<th>" . $isi["service_name"].  "</th>";
                   echo "<th>" ."Rp"." ".$isi["service_price"].  "</th>";
-                  echo "<th>" . $isi["reservation_date"].  "</th>";
-                  echo "<th>" . $isi["reservation_time"].  "</th>";
-                  echo "<th>" . $isi["reservation_status"].  "</th>";
+                  echo "<th>" . $isi["transaction_date"].  "</th>";
+                  echo "<th>" . $isi["transaction_status"].  "</th>";
                   echo "</tr>";
                 }
                 echo "</table>";
