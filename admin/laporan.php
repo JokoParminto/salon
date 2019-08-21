@@ -272,11 +272,11 @@
 											JOIN transaction_detail ON transaction_detail.transaction_detail_transaction_id = transaction.transaction_id
 											JOIN service ON service.service_id = transaction_detail.transaction_detail_service_id
 											JOIN member ON member.member_id = transaction.transaction_member_id
-                      WHERE member.member_id = $id_member
+                      WHERE member.member_id = '$id_member'
 										";
 										$i=1;
 										$dataPemesanan= mysqli_query($db, $query);
-										while ($isi = mysqli_fetch_assoc($dataPemesanan)) {
+										while ($isi=mysqli_fetch_assoc($dataPemesanan)) {
 												echo "<tr>";
 													echo "<th>" . $i++.  "</th>";
 													echo "<th>" . $isi["member_name"].  "</th>";
