@@ -38,7 +38,7 @@
         </div>
         <div class="tab-pane p-20 <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'data-member' ? 'active show' : '' ?>" id="member" role="tabpanel">
             <div class="col-md-4 form-group">
-              <label for="">Pilih Periode</label>
+              <label for="">Pilih Periode Perbulan</label>
               <input type="month" class="form-control" name="tgl_daftar" placeholder="dd/mm/yyyy" id="tgl_daftar" value="<?=isset($_GET['startdate']) ? $_GET['startdate'] : ''?>">
             </div>
             <div class="form-group">
@@ -135,7 +135,7 @@
         </div>
         <div class="tab-pane p-20 <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'data-transaksi' ? 'active show' : '' ?>" id="transaksi" role="tabpanel">
             <div class="col-md-4 form-group">
-              <label for="">Pilih Periode</label>
+              <label for="">Pilih Periode Perbulan</label>
               <input type="month" class="form-control" name="tgl_transaksi" placeholder="dd/mm/yyyy" id="tgl_transaksi" value="<?=isset($_GET['bulan']) ? $_GET['bulan'] : ''?>">
             </div>
             <div class="form-group">
@@ -148,10 +148,10 @@
                 $startdate = isset($_GET['bulan']) ? $_GET['bulan'] : '';
                 $parsing = substr($startdate, 5,2);
                 $strQuery = "
-                  SELECT DAY(transaction_created_at) AS hari, COUNT(transaction_id) as total
+                  SELECT DAY(transaction_date) AS hari, COUNT(transaction_id) as total
                   FROM transaction
-                  WHERE MONTH(transaction_created_at) = '$parsing'
-                  GROUP BY transaction_created_at
+                  WHERE MONTH(transaction_date) = '$parsing'
+                  GROUP BY transaction_date
                 ";
                 $result = mysqli_query($db, $strQuery);
                 if ($result) {

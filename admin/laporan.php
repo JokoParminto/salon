@@ -25,6 +25,7 @@
 							<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#daftarPemesan" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Daftar Pemesan</span></a> </li>						
 							<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#dataPetugas" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Daftar Petugas</span></a> </li>
 							<li class="nav-item"> <a class="nav-link <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'tanggal-pesan'? 'active show' : '' ?>" data-toggle="tab" href="#laporanPesanPeriode" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Pemesanan Perperiode</span></a> </li>
+							<li class="nav-item"> <a class="nav-link <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'member'? 'active show' : '' ?>" data-toggle="tab" href="#laporanpertransaksi" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Pemesanan Pertransaksi</span></a> </li>
 							<li class="nav-item"> <a class="nav-link <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'tanggal-transaksi'? 'active show' : '' ?>" data-toggle="tab" href="#laporanTransaksiPerperiode" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Transaksi Perperiode</span></a> </li>
 					</ul>
 					<!-- Tab panes -->
@@ -151,7 +152,15 @@
 					</div>
           <div class="tab-pane p-20 <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'tanggal-pesan' ? 'active show' : '' ?>" id="laporanPesanPeriode" role="tabpanel">
 						<div class="col-md-4 form-group">
-							<label for="">Pilih Bulan</label>
+							<label for="">Pilih Periode</label>
+									<select class="form-control" name="periode" id="periode" value="<?=isset($_GET['periode']) ? $_GET['periode'] : ''?>" >
+										<option value="">==================</option>
+										<option value="bulan">Bulan</option>
+										<option value="tahun">Tahun</option>
+									</select>
+						</div>
+						<div class="col-md-4 form-group">
+							<label for="">Pilih Tangal</label>
 								<input type="month" class="form-control" name="tgl_periksa" placeholder="dd/mm/yyyy" id="tgl" value="<?=isset($_GET['bulan']) ? $_GET['bulan'] : ''?>">
 						</div>
 						<div class="form-group">
@@ -168,7 +177,7 @@
 										<th>Nama</th>
 										<th>Tanggal Pemesanan</th>
 										<th>Layanan</th>
-										<th>Harga</th>
+                    <th>Harga</th>
 										<th>Status Pemesanan</th>
 									</tr>
 								</thead>
@@ -177,9 +186,18 @@
 										$sql_query = '';
 										$typelaporan = isset($_GET['typelaporan']) ? $_GET['typelaporan'] : '';
 										$bulan = isset($_GET['bulan']) ? $_GET['bulan'] : '';
-										$parsing = substr($bulan, 5,2);
-										if ($parsing != null) {
-											$sql_query = "AND MONTH(reservation.reservation_date) = '$parsing'";
+										$periode = isset($_GET['periode']) ? $_GET['periode'] : '';
+										if ($periode == 'bulan') {
+											$parsing = substr($bulan, 5,2);
+											
+											if ($parsing != null) {
+												$sql_query = "AND MONTH(transaction.transaction_date) = '$parsing'";
+											}	
+										} else {
+											$parsing = substr($bulan, 0,4);
+											if ($parsing != null) {
+												$sql_query = "AND YEAR(transaction.transaction_date) = '$parsing'";
+											}	
 										}
 										$query="
 											SELECT
@@ -193,19 +211,79 @@
 											JOIN member ON member.member_id = transaction.transaction_member_id
                       WHERE 0 = 0
 											$sql_query
-											AND (reservation.reservation_status = 'cancel' OR reservation.reservation_status = 'confirmed') 
-                      GROUP BY reservation.reservation_id
 										";
+										$i=1;
 										$dataPemesanan= mysqli_query($db, $query);
 										while ($isi = mysqli_fetch_assoc($dataPemesanan)) {
 												echo "<tr>";
-												echo "<th>" . $isi["reservation_id"].  "</th>";
-												echo "<th>" . $isi["member_name"].  "</th>";
-												echo "<th>" . $isi["service_name"].  "</th>";
-												echo "<th>" ."Rp"." ".$isi["service_price"]. "</th>";
-												echo "<th>" . date('F j, Y',strtotime($isi["reservation_date"])).  "</th>";
-												echo "<th>" . $isi["reservation_time"].  "</th>";
-												echo "<th>" . $isi["reservation_status"].  "</th>";
+													echo "<th>" . $i++.  "</th>";
+													echo "<th>" . $isi["member_name"].  "</th>";
+													echo "<th>" . $isi["transaction_date"].  "</th>";
+													echo "<th>" . $isi["service_name"].  "</th>";
+													echo "<th>" ."Rp"." ".$isi["service_price"].  "</th>";
+													echo "<th>" . $isi["transaction_status"].  "</th>";
+												echo "</tr>";
+											}
+											echo "</table>";
+									?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tab-pane p-20 <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'member' ? 'active show' : '' ?>" id="laporanpertransaksi" role="tabpanel">
+						<div class="col-md-4 form-group">
+							<label for="">Pilih Pemesan</label>
+									<select class="form-control" name="idmember" id="idmember" value="<?=isset($_GET['idmember']) ? $_GET['idmember'] : ''?>" >
+										<option value="">==================</option>
+										<?php
+											$query = ("select * FROM member");
+											$connect = mysqli_query($db, $query);
+											while ($data = mysqli_fetch_assoc($connect)){
+											echo "<option value='{$data['member_id']}'>{$data['member_name']}-{$data['member_id']}</option>";}?>
+									</select>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<input class="btn btn-primary" type="button" value="submit" id="reloadLaporanPertransaksi" data="member"/>
+							</div>
+						</div>
+						<div class="table-responsive">
+							<table id="datatable-dataPemesanan" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<th>#</th>  
+										<th>Nama</th>
+										<th>Tanggal Pemesanan</th>
+										<th>Layanan</th>
+                    <th>Harga</th>
+										<th>Status Pemesanan</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php
+										$id_member = isset($_GET['idmember']) ? $_GET['idmember'] : '';
+										$query="
+											SELECT
+												transaction.*,
+												transaction_detail.*,
+												service.*,
+												member.*
+											FROM transaction 
+											JOIN transaction_detail ON transaction_detail.transaction_detail_transaction_id = transaction.transaction_id
+											JOIN service ON service.service_id = transaction_detail.transaction_detail_service_id
+											JOIN member ON member.member_id = transaction.transaction_member_id
+                      WHERE member.member_id = $id_member
+										";
+										$i=1;
+										$dataPemesanan= mysqli_query($db, $query);
+										while ($isi = mysqli_fetch_assoc($dataPemesanan)) {
+												echo "<tr>";
+													echo "<th>" . $i++.  "</th>";
+													echo "<th>" . $isi["member_name"].  "</th>";
+													echo "<th>" . $isi["transaction_date"].  "</th>";
+													echo "<th>" . $isi["service_name"].  "</th>";
+													echo "<th>" ."Rp"." ".$isi["service_price"].  "</th>";
+													echo "<th>" . $isi["transaction_status"].  "</th>";
 												echo "</tr>";
 											}
 											echo "</table>";
@@ -298,7 +376,11 @@ $(document).ready(function() {
 	});
 	$('#reloadLaporanPesan').on('click', function(){
 		console.log('a');
-		window.location.href = 'laporan.php?typelaporan='+$(this).attr('data')+'&bulan='+$('#tgl').val();
+		window.location.href = 'laporan.php?typelaporan='+$(this).attr('data')+'&bulan='+$('#tgl').val()+'&periode='+$('#periode').val();
+	});
+	$('#reloadLaporanPertransaksi').on('click', function(){
+		console.log('a');
+		window.location.href = 'laporan.php?typelaporan='+$(this).attr('data')+'&idmember='+$('#idmember').val();
 	});
   $('#reloadLaporanTransaksi').on('click', function(){
 		console.log('a');
