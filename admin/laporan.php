@@ -306,8 +306,7 @@
 						<div class="table-responsive">
 							<table id="datatable-transaksi" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
 								<thead>
-									<tr>
-                      <th>#</th>  
+									<tr> 
 											<th>#</th>  
 											<th>Nama</th>
 											<th>Tanggal Pemesanan</th>
