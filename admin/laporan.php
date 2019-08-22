@@ -26,7 +26,7 @@
 							<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#dataPetugas" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Daftar Petugas</span></a> </li>
 							<li class="nav-item"> <a class="nav-link <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'tanggal-pesan'? 'active show' : '' ?>" data-toggle="tab" href="#laporanPesanPeriode" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Pemesanan Perperiode</span></a> </li>
 							<li class="nav-item"> <a class="nav-link <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'member'? 'active show' : '' ?>" data-toggle="tab" href="#laporanpertransaksi" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Pemesanan Pertransaksi</span></a> </li>
-							<li class="nav-item"> <a class="nav-link <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'tanggal-transaksi'? 'active show' : '' ?>" data-toggle="tab" href="#laporanTransaksiPerperiode" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Transaksi Perperiode</span></a> </li>
+							<li class="nav-item"> <a class="nav-link <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'tanggal-transaksi'? 'active show' : '' ?>" data-toggle="tab" href="#laporanTransaksiPerperiode" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Transaksi Perbulan</span></a> </li>
 					</ul>
 					<!-- Tab panes -->
 				<div class="tab-content">
@@ -308,12 +308,12 @@
 								<thead>
 									<tr>
                       <th>#</th>  
+											<th>#</th>  
 											<th>Nama</th>
+											<th>Tanggal Pemesanan</th>
 											<th>Layanan</th>
 											<th>Harga</th>
-											<th>Tanggal Pemesanan</th>
 											<th>Status Pemesanan</th>
-											<th>tanggal Transaksi</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -326,25 +326,29 @@
 											$sql_query = "AND MONTH(transaction.transaction_created_at) = '$parsing'";
 										}
 										$query="
-											SELECT *  
-                      FROM transaction
-                      JOIN reservation ON reservation.reservation_id = transaction.transaction_reservation_id
-                      LEFT JOIN service ON service.service_id = reservation.reservation_service_id
-                      LEFT JOIN member ON  member.member_id = reservation.reservation_member_id
-                      WHERE 0 = 0
-                      $sql_query
-                      GROUP BY transaction.transaction_id
+											SELECT
+												transaction.*,
+												transaction_detail.*,
+												service.*,
+												member.*
+											FROM transaction 
+											JOIN transaction_detail ON transaction_detail.transaction_detail_transaction_id = transaction.transaction_id
+											JOIN service ON service.service_id = transaction_detail.transaction_detail_service_id
+											JOIN member ON member.member_id = transaction.transaction_member_id
+											WHERE 0 = 0
+											$sql_query
+											GROUP BY transaction.transaction_id
 										";
+										$i=1;
 										$dataTransaksi= mysqli_query($db, $query);
 										while ($isi = mysqli_fetch_assoc($dataTransaksi)) {
 												echo "<tr>";
-												echo "<th>" . $isi["transaction_id"].  "</th>";
-												echo "<th>" . $isi["member_name"].  "</th>";
-                        echo "<th>" . $isi["service_name"].  "</th>";
-                        echo "<th>" . $isi["service_price"].  "</th>";
-                        echo "<th>" . date('F j, Y',strtotime($isi["reservation_date"])).  "</th>";
-                        echo "<th>" . $isi["reservation_status"].  "</th>";
-                        echo "<th>" . date('F j, Y H:i',strtotime($isi["transaction_created_at"])).  "</th>";
+													echo "<th>" . $i++.  "</th>";
+													echo "<th>" . $isi["member_name"].  "</th>";
+													echo "<th>" . $isi["transaction_date"].  "</th>";
+													echo "<th>" . $isi["service_name"].  "</th>";
+													echo "<th>" ."Rp"." ".$isi["service_price"].  "</th>";
+													echo "<th>" . $isi["transaction_status"].  "</th>";
 												echo "</tr>";
 											}
 											echo "</table>";
