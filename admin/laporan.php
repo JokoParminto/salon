@@ -26,7 +26,7 @@
 							<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#dataPetugas" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Daftar Petugas</span></a> </li>
 							<li class="nav-item"> <a class="nav-link <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'tanggal-pesan'? 'active show' : '' ?>" data-toggle="tab" href="#laporanPesanPeriode" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Pemesanan Perperiode</span></a> </li>
 							<li class="nav-item"> <a class="nav-link <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'member'? 'active show' : '' ?>" data-toggle="tab" href="#laporanpertransaksi" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Pemesanan Pertransaksi</span></a> </li>
-							<li class="nav-item"> <a class="nav-link <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'tanggal-transaksi'? 'active show' : '' ?>" data-toggle="tab" href="#laporanTransaksiPerperiode" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Transaksi Perbulan</span></a> </li>
+							<li class="nav-item"> <a class="nav-link <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'tanggal-transaksi'? 'active show' : '' ?>" data-toggle="tab" href="#laporanTransaksiPerperiode" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Laporan Transaksi Perperiode</span></a> </li>
 					</ul>
 					<!-- Tab panes -->
 				<div class="tab-content">
@@ -294,7 +294,15 @@
 					</div>
           <div class="tab-pane p-20 <?= isset($_GET['typelaporan']) && $_GET['typelaporan'] == 'tanggal-transaksi' ? 'active show' : '' ?>" id="laporanTransaksiPerperiode" role="tabpanel">
 						<div class="col-md-4 form-group">
-							<label for="">Pilih Bulan</label>
+							<label for="">Pilih Periode</label>
+									<select class="form-control" name="periode-transaksi" id="periode-transaksi" value="<?=isset($_GET['periode']) ? $_GET['periode'] : ''?>" >
+										<option value="">==================</option>
+										<option value="bulan">Bulan</option>
+										<option value="tahun">Tahun</option>
+									</select>
+						</div>
+						<div class="col-md-4 form-group">
+							<label for="">Pilih Tangal</label>
 								<input type="month" class="form-control" name="tgl_periksa" placeholder="dd/mm/yyyy" id="bulan" value="<?=isset($_GET['bulan-transaksi']) ? $_GET['bulan-transaksi'] : ''?>">
 						</div>
 						<div class="form-group">
@@ -320,9 +328,17 @@
 										$sql_query = '';
 										$typelaporan = isset($_GET['typelaporan']) ? $_GET['typelaporan'] : '';
 										$bulan = isset($_GET['bulan-transaksi']) ? $_GET['bulan-transaksi'] : '';
-										$parsing = substr($bulan, 5,2);
-										if ($parsing != null) {
-											$sql_query = "AND MONTH(transaction.transaction_created_at) = '$parsing'";
+										$periode = isset($_GET['periode-transaksi']) ? $_GET['periode-transaksi'] : '';
+										if ($periode == 'bulan') {
+											$parsing = substr($bulan, 5,2);
+											if ($parsing != null) {
+												$sql_query = "AND MONTH(transaction.transaction_date) = '$parsing'";
+											}	
+										} else {
+											$parsing = substr($bulan, 0,4);
+											if ($parsing != null) {
+												$sql_query = "AND YEAR(transaction.transaction_date) = '$parsing'";
+											}	
 										}
 										$query="
 											SELECT
@@ -387,7 +403,7 @@ $(document).ready(function() {
 	});
   $('#reloadLaporanTransaksi').on('click', function(){
 		console.log('a');
-		window.location.href = 'laporan.php?typelaporan='+$(this).attr('data')+'&bulan-transaksi='+$('#bulan').val();
+		window.location.href = 'laporan.php?typelaporan='+$(this).attr('data')+'&bulan-transaksi='+$('#bulan').val()+'&periode-transaksi='+$('#periode-transaksi').val();
 	});
 </script>
 </html>

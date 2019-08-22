@@ -161,6 +161,7 @@
                           <li> <a class="" href="layanan.php" aria-expanded="false"><i class="fa fa-file-text"></i><span class="hide-menu">Input Data Layanan</span></a> </li>
                           <li> <a class="" href="transaksi.php" aria-expanded="false"><i class="fa fa-money"></i><span class="hide-menu">Transaksi</span></a> </li>
                           <li> <a class="" href="daftar_pemesan.php" aria-expanded="false"><i class="fa fa-database"></i><span class="hide-menu">Data Pemesan </span></a> </li>
+                          <li> <a class="" href="laporan_petugas.php" aria-expanded="false"><i class="fa fa-tasks"></i><span class="hide-menu">Laporan Transaksi</span></a> </li>                          
                           <!-- <li> <a class="" href="pegawai.php" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Tenaga Medis </span></a> </li> -->
                           <!-- <li> <a class="" href="rekam_medis.php" aria-expanded="false"><i class="fa fa-heartbeat"></i><span class="hide-menu">Rekam Medis </span></a></li> -->
                           <?php } ?>

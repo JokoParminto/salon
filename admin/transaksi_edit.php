@@ -76,9 +76,9 @@
 										<tr>
 											<th>#</th>
 											<th>Layanan</th>
-											<th>Harga</th>
 											<th>Tanggal Pemesanan</th>
 											<th>Status Pemesanan</th>
+											<th>Harga</th>
 										</tr>
 									</thead>
 									<tbody id="dataobat">
@@ -99,11 +99,23 @@
 												echo "<tr>";
 												echo "<th>" . $i++.  "</th>";
 												echo "<th>" . $isiResepDetail["service_name"].  "</th>";
-												echo "<th>" ."Rp"." ".$isiResepDetail["service_price"].  "</th>";
 												echo "<th>" . $isiResepDetail["transaction_date"].  "</th>";
 												echo "<th>" . $isiResepDetail["transaction_status"].  "</th>";
+												echo "<th>" ."Rp"." ".$isiResepDetail["service_price"].  "</th>";
 												echo "</tr>";
 											}
+											$tot="
+												SELECT SUM(service.service_price) as total
+												FROM transaction 
+												JOIN transaction_detail ON transaction_detail.transaction_detail_transaction_id = transaction.transaction_id
+												JOIN service ON service.service_id = transaction_detail.transaction_detail_service_id
+												WHERE transaction.transaction_id = '$transaction_id'";
+											$tot_price= mysqli_query($db, $tot);
+											$data=mysqli_fetch_assoc($tot_price);
+											echo "<tr>";
+											echo "<th colspan='4' style='text-align:center;font-weight: bold;'>Total</th>";
+											echo "<th>" ."Rp"." ".$data["total"].  "</th>";
+											echo "</tr>";
 											echo "</table>";
 										$db->close();
 									?>
